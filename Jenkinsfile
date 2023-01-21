@@ -1,6 +1,6 @@
 pipeline {
      agent {
-        environment {
+        any {
                 DOCKER_CREDS = credentials('docker')
             }
 
