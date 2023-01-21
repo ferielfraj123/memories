@@ -1,21 +1,26 @@
 pipeline {
-    agent any
+    environment {
+    DOCKER_CREDS = credentials('docker')
+  }
 
     stages {
-        stage('Build') {
+        stage('Building docker image client') {
             steps {
-                echo 'Building..'
+                dir("client/"){
+                    sh 'docker build -t $DOCKER_CREDS_USR/client .'
+                       }  
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
+      stage('Login to DockerHub') {
+      steps {
+          sh 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
         }
-        stage('Deploy') {
+      }
+    
+       stage('Push to DockerHub front') {
             steps {
-                echo 'Deploying....'
-            }
-        }
+                sh 'docker push $DOCKER_CREDS_USR/client'
+      }
+    }
     }
 }
