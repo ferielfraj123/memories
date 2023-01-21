@@ -1,9 +1,11 @@
 pipeline {
-     agent any
+     agent {
         environment {
-        DOCKER_CREDS = credentials('docker')
-    }
+                DOCKER_CREDS = credentials('docker')
+            }
 
+     }
+      
     stages {
         stage('Building docker image client') {
             steps {
