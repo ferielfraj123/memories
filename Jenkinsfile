@@ -13,13 +13,13 @@ pipeline {
         }
       stage('Login to DockerHub') {
       steps {
-          sh 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
+          bat 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
         }
       }
     
        stage('Push to DockerHub front') {
             steps {
-                sh 'docker push $DOCKER_CREDS_USR/client'
+                bat 'docker push $DOCKER_CREDS_USR/client'
       }
     }
     }
