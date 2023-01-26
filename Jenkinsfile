@@ -7,7 +7,7 @@ pipeline {
         stage('Building docker image client') {
             steps {
                 dir("client/"){
-                    bat 'docker build -t rahmafrioui/client .'
+                    bat 'docker build -t $DOCKERHUB_CREDENTIALS_USR/client .'
                        }  
             }
         }
