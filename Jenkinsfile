@@ -7,13 +7,13 @@ pipeline {
         stage('Building docker image client') {
             steps {
                 dir("client/"){
-                    bat 'docker build -t DOCKERHUB_CREDENTIALS_USR/client .'
+                    bat 'docker build -t rahmafrioui/client .'
                        }  
             }
         }
       stage('Login to DockerHub') {
       steps {
-          sh 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         }
       }
     
