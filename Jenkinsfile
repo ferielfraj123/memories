@@ -19,7 +19,7 @@ pipeline {
     
        stage('Push to DockerHub front') {
             steps {
-                bat 'docker push $DOCKER_CREDS_USR/client'
+                bat 'docker push rahmafrioui/client'
       }
     }
     }
