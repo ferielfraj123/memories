@@ -13,7 +13,7 @@ pipeline {
         }
       stage('Login to DockerHub') {
       steps {
-          bat 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW'
+         bat 'echo $DOCKERHUB_CREDENTIALS_PSW |  docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin' 
         }
       }
     
