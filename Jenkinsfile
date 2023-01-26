@@ -1,9 +1,8 @@
 pipeline {
-    agent {
-        environment {
+    agent any
+     environment {
             DOCKER_CERT_PATH = credentials('docker')
         }
-    }
     stages {
         stage('Building docker image client') {
             steps {
